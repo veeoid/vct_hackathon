@@ -1,4 +1,4 @@
-# 🎮 Forge Your Team – VCT Hackathon Submission
+# 🎮 VCT Hackathon Submission - RIOT x AWS
 
 A smart scouting assistant for Valorant esports teams, built for the AWS x Riot Games VCT Hackathon. It uses real-world player stats and an LLM-powered backend to generate team compositions, justify picks, and answer detailed questions about player performance and strategy.
 
