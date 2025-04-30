@@ -1,20 +1,111 @@
-## Inspiration
-Our inspiration came from the growing demand for intelligent applications that provide accurate and context-aware responses to user queries. We wanted to learn to create a system that combines the power of AI with the vast knowledge available online, enabling users to access information quickly and effectively.
+# 🎮 Forge Your Team – VCT Hackathon Submission
 
-## What it does
-The project is an AWS Bedrock LLM-powered chat application designed to answer questions based on a curated knowledge base. Leveraging AWS Bedrock, it provides users with insightful and relevant information, with an interactive Q&A interface.
+A smart scouting assistant for Valorant esports teams, built for the AWS x Riot Games VCT Hackathon. It uses real-world player stats and an LLM-powered backend to generate team compositions, justify picks, and answer detailed questions about player performance and strategy.
 
-## How we built it
-We built the project using AWS services, starting with data ingestion from an S3 bucket. We employed Amazon Titan embeddings to convert this data into searchable formats and indexed it using OpenSearch Serverless. The Amazon Bedrock Knowledge Base API integration allowed us to efficiently retrieve relevant information based on user queries, which were then processed through a large language model to generate coherent responses. A user-friendly interface was developed using Streamlit for seamless interaction.
+---
 
-## Challenges we ran into
-One of the main challenges was ensuring fast and *accurate* retrieval of information from a large dataset, which required optimizing our embedding and search processes. Additionally, managing the complexity of user queries and maintaining the relevance of responses without retraining the underlying models posed significant hurdles. Balancing the performance of the application with its accuracy was crucial for a successful user experience.
+## 🎯 Purpose
 
-## Accomplishments that we're proud of
-We are proud of successfully building an end-to-end AI-driven application that integrates multiple AWS services seamlessly. The ability to deliver contextually relevant responses in real-time, while handling diverse queries, is a significant achievement. Our implementation of the Retrieval Augmented Generation (RAG) approach has also been a key highlight of the project. It has flaws but it was fun working on it as this was our 1st time using bedrock or AWS for an end to end project. We will try to fine-tune the model as our next step.
+Forge Your Team addresses key scouting challenges in esports:
 
-## What we learned
-Throughout the project, we gained valuable insights into cloud-native AI development, particularly in utilizing AWS Bedrock and embedding models. We learned about the intricacies of data retrieval and the importance of fine-tuning search processes to enhance response quality. Our experience with building scalable applications in the cloud has significantly improved our technical skill set.
+- 🔍 Find top players by region, role, or performance
+- 🧠 Build optimized teams based on criteria like skill level, region, or gender
+- 🗣️ Answer questions like "Who is a good IGL from NA?" or "Build a strong controller-heavy team for EMEA"
 
-## What's next for Untitled
-Moving forward, we plan to enhance the application by incorporating more diverse data sources to expand our knowledge base. We aim to refine the user experience by implementing additional features such as voice recognition and multi-language support. Continuous improvements in our model's accuracy and response time will also be a priority as we seek to make the application more robust and user-friendly.
+---
+
+## 🚀 Features
+
+- 🧑‍💻 **Team Composition Builder** – Generates 5-player teams with assigned roles based on prompts
+- 📊 **Player Stats & Role Insights** – Pulls in agent preferences, top stats, and region info
+- 📦 **Retrieval-Augmented Generation (RAG)** – Combines structured data with LLM responses for factual accuracy
+- 🌐 **LLM-Powered Chat Interface** – Ask questions like:
+  - “Give me a team with a strong IGL and duelist duo from NA”
+  - “Who’s a rising talent controller from the APAC region?”
+
+---
+
+## 🧰 Tech Stack
+
+| Layer          | Tools/Services                         |
+|----------------|----------------------------------------|
+| Frontend       | Streamlit                              |
+| LLM Backend    | Amazon Bedrock (Claude/GPT via RAG)    |
+| Data Layer     | Pandas, AWS S3                         |
+| Serverless     | AWS Lambda                             |
+| Integration    | LangChain (optional), boto3            |
+
+---
+
+## 📁 Repo Structure
+
+```
+vct_hackathon_frkd/
+├── data/                      # Preprocessed and raw player data
+├── prompts/                   # Prompt templates for RAG / LLM
+├── main_app.py                # Streamlit interface
+├── lambda_handler.py          # AWS Lambda integration
+├── rag_utils.py               # RAG + context management logic
+├── generate_team.py           # LLM-based team building logic
+├── analyze_player.py          # Player-level analysis
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🧪 Setup Instructions
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/veeoid/vct_hackathon_frkd.git
+   cd vct_hackathon_frkd
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run locally:
+   ```bash
+   streamlit run main_app.py
+   ```
+
+4. To deploy backend as Lambda:
+   - Zip `lambda_handler.py` and dependencies
+   - Upload to AWS Lambda
+   - Set environment variables for API keys
+
+---
+
+## 🧠 Sample Prompt Ideas
+
+- “Build a mixed-gender Valorant team with players from EMEA”
+- “Who is the best duelist from Brazil in the past 6 months?”
+- “Recommend a support player with consistent K/D across events”
+
+---
+
+## 🧵 Learnings
+
+- Integrated structured esports data into real-time LLM chat experience
+- Designed and deployed serverless functions with Bedrock LLMs
+- Gained deep insight into RAG design and streamlit-based rapid prototyping
+
+---
+
+## 👤 Author
+
+**Vismay Chaudhari**  
+🔗 [Portfolio](https://portfolio-ca88.vercel.app) · [LinkedIn](https://linkedin.com/in/vismay-chaudhari)
+
+---
+
+## 📄 License
+
+MIT License (or add your own)
+
+---
+
+_This project was built as part of the AWS x Riot Games VCT Hackathon challenge._
